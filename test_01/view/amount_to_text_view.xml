@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    Acción de Ventana-->
+    <record id="action_amount_to_text" model="ir.actions.act_window">
+        <field name="name">Convertir Monto a Texto</field>
+        <field name="res_model">amount.to.text</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear Nueva Conversión
+            </p>
+        </field>
+    </record>
+
+<!--    Declaración de Menú-->
+    <menuitem id="menu_amount_to_text"
+              action="action_amount_to_text"
+              parent="menu_amount_to_text_root"
+              name="Conversiones"
+              sequence="1"/>
+
+<!--    Vista Formulario-->
+    <record  id="amount_to_text_from_view" model="ir.ui.view">
+        <field name="name">amount.to.text.form.view</field>
+        <field name="model">amount.to.text</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+<!--                    <div class="oe_title">-->
+<!--                        <label for="name"/>-->
+<!--                        <h1>-->
+<!--                            <field name="name" placeholder="Ejm. FP100-000001"/>-->
+<!--                        </h1>-->
+<!--                    </div>-->
+                    <group>
+                        <group string="Monto y Moneda">
+                            <field name="amount"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <group string="Monto en Texto">
+                            <field name="amount_text" readonly="1" />
+                        </group>
+                    </group>
+                </sheet>
+<!--                CÓDIGO PARA EL CHAT - TRACKING-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+<!--    Vista Arbol-->
+    <record id="amount_to_text_tree_view" model="ir.ui.view">
+        <field name="name">amount.to.text.view.tree</field>
+        <field name="model">amount.to.text</field>
+        <field name="arch" type="xml">
+            <tree string="Conversiones">
+                <field name="amount"/>
+                <field name="currency_id"/>
+                <field name="amount_text"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
