@@ -9,10 +9,18 @@ class AccountMove(models.Model):
         ('ticket', 'Boleta'),
         ('invoice', 'Factura')], string='Tipo de Documento')
 
+    edit_type_document = fields.Boolean(string="Puede Editar Tipo de Documento", default=False, compute="_compute_edit_type_document")
+
+    def _compute_edit_type_document(self):
+        for record in self:
+            user = self.env.user
+            record.edit_type_document = user.user_edit
+
     @api.onchange('type_document')
     def _onchange_type_document(self):
-        user = self.env.user
-        if user.user_edit == False:
-            raise ValidationError(_("No tiene permisos para realizar esta accion"))
+        for record in self:
+            user = self.env.user
+            record.edit_type_document = user.user_edit
+
 
 
