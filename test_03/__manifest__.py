@@ -9,8 +9,8 @@
     'category': '',
     'depends': ['base', 'account'],
     'data': [
-        # 'view/res_config_settings_view.xml',
-        # 'view/amount_to_text_view.xml'
+        'view/account_move_inherit.xml',
+        'view/res_users_inherit_view.xml'
     ],
     'installable': True,
     'application': True,

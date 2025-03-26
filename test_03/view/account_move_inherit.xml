@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="view_account_move_inherit" model="ir.ui.view">
-            <field name="name">account.move.inherit</field>
+        <record id="tree_view_account_move_inherit" model="ir.ui.view">
+            <field name="name">account.move.inherit.tree</field>
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_invoice_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='quotation_order_setting_container']" position="inside">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="type_document"/>
+                </xpath>
+            </field>
+        </record>
 
+        <record id="form_view_account_move_inherit" model="ir.ui.view">
+            <field name="name">account.move.inherit.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_date']" position="after">
+                    <field name="type_document"/>
                 </xpath>
             </field>
         </record>
