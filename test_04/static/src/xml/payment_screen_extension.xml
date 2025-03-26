@@ -1,0 +1,14 @@
+<templates id="template" xml:space="preserve">
+  <t t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension">
+      <xpath expr="//div[hasclass('payment-controls')]" position="after">
+          <div class="button js_invoice">
+              <label for="operation_number">Número de Operación</label>
+              <br/>
+              <input type="text"
+                     id="operation_number"
+                     t-att-value="state.operationNumber"
+                     t-on-keyup="onInputChange"/>
+          </div>
+      </xpath>
+  </t>
+</templates>
